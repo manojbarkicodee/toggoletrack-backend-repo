@@ -6,8 +6,8 @@ require("dotenv").config();
 const {connection} = require("./config/db");
 
 const app = express();
-
-
+app.use(cors())
+app.use(express.json());
 const {ProjectRouter} = require("./routes/project.route");
 const { TimerRouter } = require("./routes/timer.route.js");
 const { userRouter } = require("./routes/user.route");
@@ -39,8 +39,8 @@ const authenticated = (req, res, next) => {
 };
 };
 
-app.use(express.json());
-app.use(cors())
+
+
 
 app.get("/",(req,res)=>{
   res.send("Welcome to Toggl Track backend")
